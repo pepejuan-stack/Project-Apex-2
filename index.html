@@ -26,7 +26,6 @@
  
  .container { width: 100%; max-width: 480px; text-align: center; }
  
- /* LOGO PX */
  .logo-circle { 
     width: 120px; height: 120px; background: white; border-radius: 50%; 
     margin: 0 auto 20px; display: flex; justify-content: center; align-items: center; 
@@ -54,7 +53,15 @@
  .info-text { max-height: 0; opacity: 0; overflow: hidden; transition: 0.4s; font-size: 1rem; line-height: 1.4; }
  .active .info-text { max-height: 100px; opacity: 1; margin-top: 15px; }
 
- .main-btn { width: 100px; height: 100px; background: white; border-radius: 50%; border: none; margin-top: 30px; cursor: pointer; font-weight: 900; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+ .main-btn { width: 100px; height: 100px; background: white; border-radius: 50%; border: none; margin-top: 20px; cursor: pointer; font-weight: 900; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+
+ /* AVISO SIN EXCLAMACIÓN */
+ .warning-text { 
+    margin-top: 25px; font-size: 0.75rem; color: var(--primary); 
+    font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    animation: blink 2s infinite; 
+ }
+ @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
  #shopSection { display: none; margin-top: 30px; }
 
@@ -66,21 +73,24 @@
  .btn-discord { width: 100%; padding: 18px; border-radius: 20px; border: none; font-family: 'Montserrat'; font-weight: 900; cursor: pointer; transition: 0.2s; font-size: 0.8rem; background: #5865F2; color: white; margin-top: 15px; }
  .btn-discord:hover { background: #4752c4; }
 
- /* MODAL CON ANIMACIÓN POP */
  .modal-overlay {
     display: none; position: fixed; top:0; left:0; width:100%; height:100%;
-    background: rgba(0,0,0,0.9); backdrop-filter: blur(8px); z-index: 1000;
+    background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 1000;
     align-items: center; justify-content: center;
  }
  .modal-content {
-    background: #0a0a0a; width: 85%; max-width: 380px; padding: 35px;
+    background: #0a0a0a; width: 90%; max-width: 420px; padding: 30px;
     border-radius: 28px; border: 1px solid var(--primary);
-    text-align: left;
+    text-align: left; max-height: 85vh; overflow-y: auto;
     animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
  }
+ .modal-content h2 { font-family: 'Montserrat'; font-weight: 900; color: var(--primary); margin: 0 0 10px; font-size: 1.4rem; }
+ .modal-content h3 { font-family: 'Montserrat'; font-size: 0.8rem; color: var(--primary); margin: 15px 0 5px; text-transform: uppercase; letter-spacing: 1px; }
+ .modal-content p { font-size: 0.85rem; line-height: 1.5; color: #ccc; margin: 0; }
+ .modal-content b { color: white; }
 
  @keyframes modalPop {
-    from { opacity: 0; transform: scale(0.7); }
+    from { opacity: 0; transform: scale(0.8); }
     to { opacity: 1; transform: scale(1); }
  }
 </style>
@@ -90,14 +100,23 @@
 <div class="circle-bg"></div>
 <div class="circle-bg-2"></div>
 
-<!-- Modal Info -->
 <div id="pxModal" class="modal-overlay" onclick="this.style.display='none'">
     <div class="modal-content" onclick="event.stopPropagation()">
-        <h2 style="font-family: 'Montserrat'; font-weight: 900; color: var(--primary); margin: 0 0 15px;">PROJECT APEX</h2>
-        <p style="font-size: 0.95rem; line-height: 1.6; color: #eee; margin: 0;">
-            Este es un proyecto beta diseñado para deshabilitar <b>Blocksi Enterprise Edition</b> en Chromebooks de forma efectiva.
-        </p>
-        <button onclick="document.getElementById('pxModal').style.display='none'" style="margin-top: 25px; width: 100%; background: white; border: none; padding: 12px; border-radius: 12px; font-weight: 900; font-family: 'Montserrat'; cursor: pointer;">ENTENDIDO</button>
+        <h2>PROJECT APEX BETA</h2>
+        <p>Este es un proyecto beta diseñado para deshabilitar <b>Blocksi Enterprise Edition</b> en Chromebooks de forma efectiva.</p>
+        
+        <h3>Solicitud de Intervención</h3>
+        <p>Entrega del terminal en punto de encuentro designado. Tiempo de ejecución estimado: <b>5 minutos</b>. Pago previo a la intervención. <b>Sin excepciones.</b></p>
+        
+        <h3>Cláusulas de Seguridad</h3>
+        <p><b>Visibilidad:</b> El método es indetectable para los sistemas de monitoreo en tiempo real. Ninguna alerta saltará en el panel de administración.</p>
+        <p style="margin-top:8px;"><b>Trazabilidad:</b> El historial de navegación permanece vinculado a la cuenta de usuario. Project Apex libera el acceso, pero <b>no borra la actividad del servidor</b>.</p>
+        <p style="margin-top:8px;"><b>Responsabilidad:</b> Actúe bajo su propia responsabilidad. Para mayor seguridad, proporcionamos una web <b>Proxy</b> exclusiva con nuestros planes, diseñada para que sus búsquedas no aparezcan en el historial.</p>
+        
+        <h3>Garantía</h3>
+        <p>Todo servicio OMEGA cuenta con <b>soporte de reactivación</b> si el sistema es parcheado en las primeras 48 horas.</p>
+        
+        <button onclick="document.getElementById('pxModal').style.display='none'" style="margin-top: 25px; width: 100%; background: white; border: none; padding: 12px; border-radius: 12px; font-weight: 900; font-family: 'Montserrat'; cursor: pointer;">ACEPTAR Y CERRAR</button>
     </div>
 </div>
 
@@ -131,6 +150,8 @@
 
  <button class="main-btn" id="buyBtn">START<br>NOW</button>
 
+ <div class="warning-text">Importante leer la información en el botón de PX</div>
+
  <div id="shopSection">
     <div class="shop-card">
         <h3 style="font-family: 'Montserrat'; margin-bottom: 20px; text-align: center;">HORARIOS</h3>
@@ -156,8 +177,7 @@
             <span class="hours-list">10:15-11:10 | 11:10-12:05</span>
         </div>
 
-        <!-- Enlace de Discord Actualizado -->
-        <button class="btn-discord" onclick="window.open('https://discord.gg/bbpp5uAQw', '_blank')">UNIRSE AL DISCORD</button>
+        <button class="btn-discord" onclick="window.open('https://discord.gg', '_blank')">UNIRSE AL DISCORD</button>
     </div>
  </div>
  
@@ -177,6 +197,7 @@
     
     if (activeCard) {
       this.style.display = 'none';
+      document.querySelector('.warning-text').style.display = 'none';
       document.getElementById('shopSection').style.display = 'block';
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     } else {
